@@ -10,8 +10,9 @@ pip3 install pymongo
 pip3 install dotenv
 pip3 install "python-dotenv[cli]"
 ```
+**2. Update the .env file with your appropriate MongoDB replicaset IP and port.**
 
-**2. Go to the directory where script placed and run it.**
+**3. Go to the directory where script placed and run it.**
 ```
 python3 rocketchat_db_query.py
 ```
