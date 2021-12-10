@@ -15,3 +15,7 @@ pip3 install "python-dotenv[cli]"
 ```
 python3 rocketchat_db_query.py
 ```
+
+*Grafana Dashboard*
+![Grafana Dashboard](https://grafana.com/api/dashboards/15364/images/11401/image)
+![Grafana Dashboard](https://grafana.com/api/dashboards/15364/images/11397/image)
