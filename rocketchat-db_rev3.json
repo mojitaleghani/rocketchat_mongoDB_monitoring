@@ -43,7 +43,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "8.3.3"
+      "version": "8.4.5"
     },
     {
       "type": "panel",
@@ -100,7 +100,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
   "id": null,
-  "iteration": 1642400859475,
+  "iteration": 1652293448040,
   "links": [
     {
       "asDropdown": true,
@@ -234,6 +234,7 @@
         "x": 4,
         "y": 1
       },
+      "hideTimeOverride": false,
       "id": 12,
       "options": {
         "colorMode": "value",
@@ -250,7 +251,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "targets": [
         {
           "alias": "",
@@ -284,8 +285,7 @@
           "timeField": "@timestamp"
         }
       ],
-      "timeFrom": "24h",
-      "title": "Online",
+      "title": "Online Users",
       "transparent": true,
       "type": "stat"
     },
@@ -335,7 +335,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "targets": [
         {
           "alias": "",
@@ -369,8 +369,7 @@
           "timeField": "@timestamp"
         }
       ],
-      "timeFrom": "24h",
-      "title": "Idle",
+      "title": "Idle Users",
       "transparent": true,
       "type": "stat"
     },
@@ -403,6 +402,7 @@
         "x": 12,
         "y": 1
       },
+      "hideTimeOverride": false,
       "id": 14,
       "options": {
         "colorMode": "value",
@@ -419,7 +419,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "targets": [
         {
           "alias": "",
@@ -453,8 +453,7 @@
           "timeField": "@timestamp"
         }
       ],
-      "timeFrom": "24h",
-      "title": "Offline",
+      "title": "Offline Users",
       "transparent": true,
       "type": "stat"
     },
@@ -514,7 +513,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "targets": [
         {
           "alias": "",
@@ -597,7 +596,7 @@
           "valueSize": 20
         }
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "targets": [
         {
           "alias": "",
@@ -799,6 +798,51 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total_Online_Users:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total_Away_Users:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total_Busy_Users:"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -820,7 +864,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "targets": [
@@ -834,7 +879,7 @@
           "hide": false,
           "interval": "",
           "intervalFactor": 10,
-          "legendFormat": "Online Users",
+          "legendFormat": "{{__name__}}",
           "refId": "A"
         },
         {
@@ -847,7 +892,7 @@
           "hide": false,
           "interval": "",
           "intervalFactor": 10,
-          "legendFormat": "Idle Users",
+          "legendFormat": "{{__name__}}",
           "refId": "D"
         },
         {
@@ -860,7 +905,7 @@
           "hide": false,
           "interval": "",
           "intervalFactor": 10,
-          "legendFormat": "Busy Users",
+          "legendFormat": "{{__name__}}",
           "refId": "B"
         },
         {
@@ -873,7 +918,7 @@
           "hide": true,
           "interval": "",
           "intervalFactor": 10,
-          "legendFormat": "Total Offline Users",
+          "legendFormat": "{{__name__}}",
           "refId": "C"
         }
       ],
@@ -1118,7 +1163,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1186,7 +1232,7 @@
           {
             "evaluator": {
               "params": [
-                80
+                85
               ],
               "type": "gt"
             },
@@ -1207,12 +1253,12 @@
             "type": "query"
           }
         ],
-        "executionErrorState": "keep_state",
+        "executionErrorState": "alerting",
         "for": "30s",
         "frequency": "1m",
         "handler": 1,
         "name": "High cpu usage RC-DB1",
-        "noDataState": "keep_state",
+        "noDataState": "alerting",
         "notifications": []
       },
       "datasource": {
@@ -1309,7 +1355,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.2",
@@ -1348,7 +1395,7 @@
         {
           "colorMode": "critical",
           "op": "gt",
-          "value": 80,
+          "value": 85,
           "visible": true
         }
       ],
@@ -1363,7 +1410,7 @@
           {
             "evaluator": {
               "params": [
-                80
+                85
               ],
               "type": "gt"
             },
@@ -1384,12 +1431,12 @@
             "type": "query"
           }
         ],
-        "executionErrorState": "keep_state",
+        "executionErrorState": "alerting",
         "for": "30s",
         "frequency": "1m",
         "handler": 1,
         "name": "High cpu usage RC-DB2",
-        "noDataState": "keep_state",
+        "noDataState": "alerting",
         "notifications": []
       },
       "datasource": {
@@ -1486,7 +1533,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.2",
@@ -1525,7 +1573,7 @@
         {
           "colorMode": "critical",
           "op": "gt",
-          "value": 80,
+          "value": 85,
           "visible": true
         }
       ],
@@ -1540,7 +1588,7 @@
           {
             "evaluator": {
               "params": [
-                80
+                85
               ],
               "type": "gt"
             },
@@ -1561,12 +1609,12 @@
             "type": "query"
           }
         ],
-        "executionErrorState": "keep_state",
+        "executionErrorState": "alerting",
         "for": "30s",
         "frequency": "1m",
         "handler": 1,
         "name": "High cpu usage RC-DB3",
-        "noDataState": "keep_state",
+        "noDataState": "alerting",
         "notifications": []
       },
       "datasource": {
@@ -1663,7 +1711,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.1.2",
@@ -1702,7 +1751,7 @@
         {
           "colorMode": "critical",
           "op": "gt",
-          "value": 80,
+          "value": 85,
           "visible": true
         }
       ],
@@ -1769,7 +1818,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1918,7 +1967,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2067,7 +2116,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2223,7 +2272,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2366,7 +2415,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2509,7 +2558,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.4.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2653,7 +2702,7 @@
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 46
+            "y": 45
           },
           "id": 37,
           "options": {
@@ -2673,7 +2722,7 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.1.2",
+          "pluginVersion": "8.4.5",
           "targets": [
             {
               "alias": "",
@@ -2737,7 +2786,7 @@
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 46
+            "y": 45
           },
           "id": 38,
           "options": {
@@ -2757,7 +2806,7 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.1.2",
+          "pluginVersion": "8.4.5",
           "targets": [
             {
               "alias": "",
@@ -2821,7 +2870,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 46
+            "y": 45
           },
           "id": 39,
           "options": {
@@ -2841,7 +2890,7 @@
             },
             "textMode": "auto"
           },
-          "pluginVersion": "8.1.2",
+          "pluginVersion": "8.4.5",
           "targets": [
             {
               "alias": "",
@@ -2880,7 +2929,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 34,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -2924,7 +2973,6 @@
   "timezone": "",
   "title": "RocketChat DB",
   "uid": "K2z5uh5nz",
-  "version": 126,
-  "weekStart": "",
-  "gnetId": 15364
+  "version": 139,
+  "weekStart": ""
 }
