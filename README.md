@@ -4,7 +4,7 @@ Sample python script for monitoring Rocketchat database and get statistics of us
 
 [Grafana dashboard for rocketchat](https://grafana.com/grafana/dashboards/15364)
 
-[Click to download json file](https://grafana.com/api/dashboards/15364/revisions/2/download)
+[Click to download json file](https://grafana.com/api/dashboards/15364/revisions/3/download)
 
 
 **1. Update python:**
